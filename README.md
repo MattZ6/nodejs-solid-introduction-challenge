@@ -13,13 +13,13 @@
 Clone o repositório:
 
 ```bash
-$ git clone https://github.com/MattZ6/nodejs-solid-introduction-challenge
+git clone https://github.com/MattZ6/nodejs-solid-introduction-challenge
 ```
 
 Instale as dependências do projeto:
 
 ```bash
-$ yarn
+yarn
 ```
 
 ## 🔥 Executando
@@ -27,7 +27,7 @@ $ yarn
 Para executar a aplicação em ambiente de desenvolvimento (localmente):
 
 ```bash
-$ yarn dev
+yarn dev
 ```
 
 ## 🧪 Testes
@@ -35,7 +35,7 @@ $ yarn dev
 Para executar os testes:
 
 ```bash
-$ yarn test
+yarn test
 ```
 
 ___
