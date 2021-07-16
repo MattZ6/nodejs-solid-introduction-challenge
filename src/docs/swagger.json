@@ -1,0 +1,250 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Introdução ao SOLID 🦾",
+    "description": "Documentação da API do desafio de introdução ao SOLID",
+    "license": {
+      "name": "Licença da aplicação",
+      "url": "https://github.com/MattZ6/nodejs-solid-introduction-challenge/blob/main/LICENSE.md"
+    },
+    "contact": {
+      "name": "Matheus Felipe Zanin",
+      "url": "https://github.com/MattZ6"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Usuários"],
+        "summary": "Cria um novo usuário",
+        "description": "Cria um novo usuário para aplicação",
+        "requestBody":{
+          "content": {
+            "application/json": {
+              "schema":{
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "John Doe",
+                  "description": "johndoe@email.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuário criado com sucesso 🎉",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "xxx-xxxxxxx-xxxxx",
+                  "name": "John Doe",
+                  "email": "johndoe@email.com",
+                  "admin": false,
+                  "created_at": "2021-07-15T12:12:11.282Z",
+                  "updated_at": "2021-07-15T12:12:11.282Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Já existe um usuário cadastrado com este e-mail"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Usuários"],
+        "summary": "Lista todos os usuários registrados",
+        "description": "Lista todos os usuários registrados no caso de o usuário o qual requisitou ser um administrador",
+        "responses": {
+          "200": {
+            "description": "Usuários listados com sucesso 🎉",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": "xxx-xxxxxxx-xxxxx",
+                      "name": "John Doe",
+                      "email": "johndoe@email.com",
+                      "admin": false,
+                      "created_at": "2021-07-15T12:12:11.282Z",
+                      "updated_at": "2021-07-15T12:12:11.282Z"
+                    },
+                    {
+                      "id": "yyy-yyyyyyy-yyyyy",
+                      "name": "Jane Doe",
+                      "email": "janedoe@email.com",
+                      "admin": true,
+                      "created_at": "2021-07-15T12:12:11.282Z",
+                      "updated_at": "2021-07-15T12:12:11.282Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "O atual usuário não existe ou não é um administrador"
+          }
+        }
+      }
+    },
+    "/users/:user_id": {
+      "get": {
+        "tags": ["Usuários"],
+        "summary": "Recupera o perfil de um usuário",
+        "description": "Recupera o perfil de um usuário especificado pelo id",
+        "responses": {
+          "200": {
+            "description": "Perfil carregado com sucesso 🎉",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "yyy-yyyyyyy-yyyyy",
+                  "name": "Jane Doe",
+                  "email": "janedoe@email.com",
+                  "admin": true,
+                  "created_at": "2021-07-15T12:12:11.282Z",
+                  "updated_at": "2021-07-15T12:12:11.282Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "O usuário informado não existe"
+          }
+        }
+      }
+    },
+    "/users/:user_id/admin": {
+      "patch": {
+        "tags": ["Usuários"],
+        "summary": "Torna o usuário informado um administrador",
+        "description": "Torna o usuário informado um administrador",
+        "responses": {
+          "200": {
+            "description": "Usuário alterado com sucesso 🎉",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "id": "xxx-xxxxxxx-xxxxx",
+                    "name": "John Doe",
+                    "email": "johndoe@email.com",
+                    "admin": true,
+                    "created_at": "2021-07-15T12:12:11.282Z",
+                    "updated_at": "2021-07-18T12:12:11.282Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "O atual usuário não existe ou não é um administrador"
+          }
+        }
+      }
+    }
+  }
+}
