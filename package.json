@@ -1,5 +1,6 @@
 {
   "name": "nodejs-solid-introduction-challenge",
+  "description": "🔥 Código de resolução dos desafios Introdução ao SOLID e Documentação com Swagger, da trilha de NodeJS — Ignite",
   "version": "1.0.0",
   "license": "MIT",
   "author": {
